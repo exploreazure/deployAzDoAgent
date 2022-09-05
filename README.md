@@ -207,7 +207,7 @@ To invoke the command. Run this command (Note, I have cloned this public repo on
 az vm run-command invoke --resource-group "rg-azdo-selfhosted02" --name "vm-agent03" --command-id RunShellScript --scripts @"C:\repos\deployAzDoAgent\deployAzDoAgent.sh"
 ```
 
-**Optional Step 6 - Tidy Up
+**Optional Step 6 - Tidy Up**
 
 This step should only be run if you no longer require the agent to registered to Azure DevOps
 
