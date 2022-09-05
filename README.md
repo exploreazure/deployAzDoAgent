@@ -7,7 +7,7 @@ In this repo, I have provided scripts to automate the deployment and the configu
 
 In Azure DevOps you need a agent to execute your pipeline activities. 
 
-For example, if you are using Terraform. A pipepline task will download your Terraform code from version control into the agent instance. The agent then will trigger the Terraform workflow and deploy your infrasture. These steps are defined in your pipeline, but executed on the agent.
+For example, if you are using Terraform. A pipepline task will download your Terraform code from version control into the agent instance. The agent then will trigger the Terraform workflow and deploy your infrastructure. These steps are defined in your pipeline, but executed on the agent.
 
 **Choices**
 
