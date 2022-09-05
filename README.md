@@ -233,6 +233,8 @@ These steps show the automated tasks to deploy a Microsoft self-hosted agent as 
 # Useful Information
 
 [Microsoft Documentation: Microsoft-Hosted Agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)
+
 [Microsoft Documentation: Self-Hosted Linux Agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
+
 [Microsoft Documentation: Self-Hosted Windows Agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
