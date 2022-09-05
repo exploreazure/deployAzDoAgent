@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# The script written to deploy the Azure DevOps Agent onto a virtual machine hosted in Azure
+# This has been script written to deploy the Azure DevOps Agent onto a Liunx virtual machine hosted in Azure
 # This uses the RunShellScript command, which requires the VM agent to be installed
 # Version 1
 # Written on 26/08/2022

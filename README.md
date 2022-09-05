@@ -1,7 +1,7 @@
 # Deploy Azure DevOps Self Hosted Agents
 
 ## Introduction
-In this repo, I provide scripts to automate the deployment and the configuration of the Azure DevOps agent software.
+In this repo, I have provided scripts to automate the deployment and the configuration of the Azure DevOps agent software.
 
 **What is a Azure DevOps Agent?**
 
@@ -77,6 +77,7 @@ az network nsg rule create --name $nsgrulename --nsg-name $nsgname --resource-gr
 
 ## Create virtual network
 az network vnet create --name $vnetname --resource-group $resourcegroup --address-prefixes $addressprefix --location $location --subnet-name $subnetname --subnet-prefixes $subnetprefix --network-security-group $nsgname
+```
 
 We have now deployed our networking components for our lab environment. 
 
@@ -107,13 +108,17 @@ subnetname="sn-azdoagents"
 # Create resource group
 az group create --location $location --name $resourcegroup
 
-# Build virtual machine - Note at the time of writting this script, 18.04-LTS was default image. I have gone for 20-04-lts
+# Build virtual machine
+
+# Note at the time of writting this script, 18.04-LTS was default image. I have gone for 20-04-lts**
+
 az vm create --name $vmname --resource-group $resourcegroup --image $image --admin-username $adminusername --public-ip-sku "Standard" --nic-delete-option="Delete" --os-disk-delete-option="Delete" --nsg "" --size $vmsize --ssh-key-value $sshkey --vnet-name $vnetname --subnet $subnetname
 ```
 
 Once, deployed you have a Ubuntu server deployed into your subscription. You can ssh into the server, by using below command. This ssh connection is optional, as we are going to install and configure all tools via automation.
 
 To remotely connect to server, use ssh at the command line:
+
 
 ```
 ssh -I id_rsa <adminusername>@<publicip>
@@ -139,15 +144,18 @@ I tried to use Azure CLI to create the agent pool. As there is an excellent DevO
 
 The first set of commands, will configure your default DevOps project:
 
+
 ```
 # Remember to replace <> string with your DevOps organisation name
 az devops configure --defaults orginization=https://dev.azure.com/<YourDevOpsOrganisation>/
 ```
+
 The first time you run the Azure DevOps extension, you will see this message. Press 'Y' to install the extension, as it isn't installed by default when you install the Azure CLI core extensions.
 
 ![Azure CLI extension](cli-extension.png)
 
 To sign into DevOps run the below two commands:
+
 
 ```
 az devops login
@@ -155,11 +163,13 @@ az devops login
 # Below command will show if you are connected to your DevOps organsisation correctly
 az deveps projects list
 ```
+
 I stopped here and used the portal method, in this article [Microsoft Documentation: Microsoft Create and Manage Agent Pools](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues?view=azure-devops&tabs=yaml%2Cbrowser). As the Azure CLI command to create the agent was missing. Once, you have created the agent pool, please move onto step 4.
 
 **Step 4 - Configure Key vault** 
 
 I created a Key vault using the following Azure CLI commands. In my lab environment, I have placed all resources in the same resource group (rg-azdo-selfhosted). This allows me to quickly destory the resource group, once I have finished with the resource. In production, you may consider, seperating the resources into different resource groups.
+
 
 ```
 # Set variables
@@ -168,7 +178,6 @@ keyvaultname="kvlabselfh02"
 location="northeurope"
 secretname="azdoAgentPAT"
 assignee="<rbacgrouporusertocreatesecrets>"
-assignee="barrysharpen_gmail.com#EXT#@barrysharpengmail869.onmicrosoft.com"
 
 # Create Vault
 az keyvault create --name $keyvaultname --resource-group $resourcegroup --location $location --enable-rbac-authorization true
@@ -186,6 +195,7 @@ az keyvault secret set --vault-name $keyvaultname --name $secretname --value $se
 
 # Create user identity, assign key vault secrets user - This allows the virtual machine is retrieve the secret
 az vm identity assign --resource-group $resourcegroup --name $vmname --scope $keyvaultid --role 4633458b-17de-408a-b874-0445c86b69e6
+```
 
 **Step 5 - Install Azure Agent onto newly created Virtual Machine**
 
@@ -193,9 +203,31 @@ This is the final step, in this step we install and configure the agent. To do t
 
 To invoke the command. Run this command (Note, I have cloned this public repo onto my local drive c:\repos, your path may be different):
 
+```
 az vm run-command invoke --resource-group "rg-azdo-selfhosted02" --name "vm-agent03" --command-id RunShellScript --scripts @"C:\repos\deployAzDoAgent\deployAzDoAgent.sh"
+```
+
+**Optional Step 6 - Tidy Up
+
+This step should only be run if you no longer require the agent to registered to Azure DevOps
+
+Unregister the agent from Azure Devops
+
+```
+
+```
 
 
+Delete resource group
+
+```
+
+```
+
+
+# Conclusion
+
+These steps show the automated tasks to deploy a Microsoft self-hosted agent as a Linux virtual machine. Currently working on documenting a pipeline to deploy the agent. Also, working on documentating the steps to deploy a Microsoft self-hosted agents.
 
 
 # Useful Information
