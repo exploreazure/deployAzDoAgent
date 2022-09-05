@@ -214,16 +214,16 @@ This step should only be run if you no longer require the agent to registered to
 Unregister the agent from Azure Devops
 
 ```
-
+az vm run-command invoke --resource-group "rg-azdo-selfhosted02" --name "vm-agent03" --command-id RunShellScript --scripts @"C:\repos\deployAzDoAgent\uninstallAzDoAgent.sh"
 ```
 
 
 Delete resource group
 
 ```
+az group delete --name "rg-azdo-selfhosted02"
 
 ```
-
 
 # Conclusion
 
