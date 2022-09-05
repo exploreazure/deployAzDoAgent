@@ -45,7 +45,6 @@ else
 
    if [ ! -f "$pathToAgent/svc.sh" ]; then
       # This section of the script, will configure agent
-      echo "config agent"
       az login --identity
 
       secret=`az keyvault secret show --vault-name "$keyVaultName" --name "$secretName" --query "value"`
