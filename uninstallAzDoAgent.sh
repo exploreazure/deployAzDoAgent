@@ -10,7 +10,7 @@ vmName='vm-agent03'
 pathToAgent="/home/$linuxUser/myagent"
 keyVaultName='kvlabselfh02'
 secretName='azdoAgentPAT'
-azdoOrg="https://dev.azure.com/barrysharpen/"
+azdoOrg="https://dev.azure.com/<devopsorg>/"
 poolName="LinuxSelfHosted"
 
 cd "$pathToAgent"
