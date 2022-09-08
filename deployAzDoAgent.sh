@@ -13,7 +13,7 @@ pathToAgent="/home/$linuxUser/myagent"
 agentVersion='https://vstsagentpackage.azureedge.net/agent/2.206.1/vsts-agent-linux-x64-2.206.1.tar.gz'
 keyVaultName='kvlabselfh02'
 secretName='azdoAgentPAT'
-azdoOrg="https://dev.azure.com/<yourorg>/"
+azdoOrg="https://dev.azure.com/<org>/"
 poolName="LinuxSelfHosted"
 
 # Create Azure DevOps agent directory if doesn't exist
