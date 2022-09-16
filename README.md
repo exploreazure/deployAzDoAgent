@@ -1,6 +1,6 @@
 # Deploy Azure DevOps Self Hosted Agents
 
-## Introduction
+# Introduction
 In this repo, I have provided scripts to automate the deployment and the configuration of the Azure DevOps agent software.
 
 **What is a Azure DevOps Agent?**

@@ -195,7 +195,7 @@ Microsoft hosted agents are allocated the following resources:
 |------------	|---------------------------|
 | VM Size    	| General Purpose (DS2_v2)	|
 | Memory     	| 7GB             	        |
-| Disk Space 	| 10GB available         	|
+| Disk Space 	| 10GB available           	|
 | Disk Type  	| SSD             	        |
 | CPU        	| 2 Cores         	        |
 
@@ -239,6 +239,23 @@ Windows and Linux Microsoft-hosted agents will provisioned in the same geography
 
 *MacOS hosted agents are provisioned in Github's macos cloud, which is located in the United States*. This is a consideration, when running MacOS hosted agents.
 
+# Reason 6 - Timeout
+
+Some deployments take time to execute, for instance older SKU's of VPN gateways can take up to 45 minutes to deploy. By, default a pipeline job will time out if the job takes over 60 minutes. The below time out parameter will overide this default value:
+
+```
+jobs:
+- job: myJob
+  timeoutInMinutes: 80
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - bash: echo "Hello world"
+```
+
+However, a self-hosted agent has a maximum limit of 60 minutes for private projects and 360 minutes for public projects [Timeout limits](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#timeouts)
+
+*This can be a consideration if your pipeline task are long running*
 
 # Summary
 
