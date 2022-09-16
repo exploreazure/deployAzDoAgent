@@ -237,7 +237,7 @@ You select a region, when you create a DevOps organisation. Currently, you have 
 
 Windows and Linux Microsoft-hosted agents will provisioned in the same geography as your Azure DevOps organisation. 
 
-*MacOS hosted agents are provisioned in Github's macos cloud, which is located in the United States*. This is a consideration, when running MacOS hosted agents.
+**MacOS hosted agents are provisioned in Github's macos cloud, which is located in the United States**. This is a consideration, when running MacOS hosted agents.
 
 # Reason 6 - Timeout
 
@@ -255,7 +255,16 @@ jobs:
 
 However, a self-hosted agent has a maximum limit of 60 minutes for private projects and 360 minutes for public projects [Timeout limits](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#timeouts)
 
-*This can be a consideration if your pipeline task are long running*
+**This can be a consideration if your pipeline task are long running**
+
+# FAQ
+**What permissions are required to register an agent pool?**
+At Azure DevOps Organisation level you need to have the Administrator role [Security of agent pools](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues?view=azure-devops&tabs=yaml%2Cbrowser#security)
+
+**How does each self-agent hosted agent communicate with Azure DevOps?**
+Self-hosted agents will poll for pipeline jobs which orginate from Azure DevOps. The below article details the outbound IP address ranges.
+
+[Outbound Connections](https://docs.microsoft.com/en-us/azure/devops/organizations/security/allow-list-ip-url?view=azure-devops&tabs=IP-V4#outbound-connections)
 
 # Summary
 
