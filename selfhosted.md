@@ -24,7 +24,7 @@ The following Azure CLI was used to deploy the Key Vault
 
 ```
 # Change variable values, to match your environment
-servicepinciple="ff299048-1656-409d-9590-9971ef7701b3" 
+servicepinciple="<serviceprinicpleid>" 
 resourcegroup="rg-azdo-selfhosted02"
 keyvaultname="kvlabselfh03"
 location="northeurope"
