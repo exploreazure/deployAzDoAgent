@@ -253,7 +253,7 @@ jobs:
   - bash: echo "Hello world"
 ```
 
-However, a self-hosted agent has a maximum limit of 60 minutes for private projects and 360 minutes for public projects [Timeout limits](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#timeouts)
+However, a Microsoft-hosted agent has a maximum limit of 60 minutes for private projects and 360 minutes for public projects [Timeout limits](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#timeouts)
 
 **This can be a consideration if your pipeline task are long running**
 
