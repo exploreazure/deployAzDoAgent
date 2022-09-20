@@ -13,7 +13,9 @@ In this article, we are going to look at reasons why people use self-hosted. As 
 
 # Reason 1 - Networking
 
-Azure DevOps is a PaaS service, the Microsoft self-hosted are co-located compute resource. They are not provisioned within one of your subscription. Just like, Azure DevOps, I think of the self-hosted agents as also a PaaS offering. 
+Azure DevOps is a PaaS service, the Microsoft self-hosted are co-located compute resource. They are not provisioned within one of your subscription. The below diagram illustrates the networking differences between the two types of agents.
+
+![Azure DevOps Agents](self-hosted1.png)
 
 The remaining part of this section will demonstrate Azure DevOps communicating with Key Vault and a Storage account.
 
